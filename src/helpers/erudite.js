@@ -4,9 +4,6 @@ const glassUse = (origin, target, erudite) => {
     console.log(origin.name + " has the glasses of the erudite, and its aiming to use them!")
     console.log("------------------------------------")
 
-    console.log("***************** ANGER CHECK ***********")
-    console.log(erudite.ang)
-    
         if(erudite.ang < 4)
             leftArm(origin)
 

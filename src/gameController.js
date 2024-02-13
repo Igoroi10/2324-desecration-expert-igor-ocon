@@ -48,10 +48,6 @@ const gameLoop = (villain, hero, erudite, turn, eruditeTurn) => {
     if(eruditeTurn === turn){
         eruditeInit(erudite, villain, hero)
     }
-    else{
-        console.log("erudite turn")
-        console.log(eruditeTurn)
-    }
 
     if(erudite.stay){
         eruditeStats(erudite)
