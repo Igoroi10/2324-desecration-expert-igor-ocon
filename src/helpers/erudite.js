@@ -1,34 +1,34 @@
 import roll from "./roll.js";
 
 const glassUse = (origin, target, erudite) => {
-    initialRoll = roll(1, 1, 20)
     console.log(origin.name + " has the glasses of the erudite, and its aiming to use them!")
     console.log("------------------------------------")
+
+    console.log("***************** ANGER CHECK ***********")
+    console.log(erudite.ang)
     
-    switch(initialRoll){
-        case (initialRoll < 4):
+        if(erudite.ang < 4)
             leftArm(origin)
-            break;
-        case (3 < initialRoll < 7):
+
+        else if(erudite.ang < 7)
             rightArm(origin)
-            break;
-        case (6 < initialRoll < 10):
+
+        else if (erudite.ang < 10)
             skip(origin)
-            break;
-        case (9 < initialRoll < 14):
+
+        else if(erudite.ang < 14)
             damage(origin, erudite)
-            break;
-        case (13 < initialRoll < 17):
+
+        else if (erudite.ang < 17)
             place(origin, target)
-            break;
-        case (16 < initialRoll < 19):
+
+        else if(erudite.ang < 19)
             recoverGlass(origin, erudite)
-            break;
-        case (initialRoll > 18):
+
+        else if (erudite.ang > 18)
             instaKill(origin, erudite)
-            break;
-            
-    }
+
+
 
     checkGlasses(origin, erudite)
     console.log("------------------------------------")
@@ -41,6 +41,8 @@ const leftArm = (origin) => {
 
         console.log(origin.name + " has received a massive hit while using the glasses, smashing the LEFT arm in the process")
     }
+    else
+        console.log(origin.name + "'s left arm is already damaged")
 
 }
 
@@ -51,6 +53,8 @@ const rightArm = (origin) => {
 
         console.log(origin.name + " has received a massive hit while using the glasses, smashing the RIGHT arm in the process")
     }
+    else
+        console.log(origin.name + "'s right arm is already damaged")
 }
 
 const skip = (origin) => {
@@ -84,3 +88,20 @@ const instaKill = (origin, erudite) => {
     console.log(origin.name +" uses the erudite glass against the erudite himself, with a blazing blast, the erudite's head rolls, gasping its last breath. The erudite is no more!!!!")
 
 }
+
+const checkGlasses = (origin, erudite) => {
+    if(origin.glasses){
+        origin.glasses = false
+        erudite.glasses = true
+        erudite.stay = false
+        erudite.appears = false
+        console.log(origin.name + " feels dizzy and leaves the glasses on the ground, it that very moment the erudite takes the glasses and dissapears, fading into mist")
+    }
+    else{
+        erudite.stay = true
+        console.log("The erudite struggles to recover his glasses, it seems that he shall be around for a little longer!!!!")
+    }
+
+}
+
+export default glassUse
